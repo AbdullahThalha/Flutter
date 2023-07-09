@@ -36,49 +36,19 @@ class Homepage extends StatelessWidget {
         child: Center(
           child:Column(
             children: [
-              ListTile(
-                title: Text('Rafat Miraj',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
-                subtitle: Text('01314000000'),
-                leading: Icon(Icons.person,color: Colors.green,size: 24,),///set icon on the left side of title
-                trailing: Icon(Icons.call) ,///set icon on right side
-                tileColor: Colors.grey.shade400,
-                iconColor: Colors.red,
-                onTap: (){
+              Wrap(///wrapping is like row ,but in wrapping if overlapping something
+                spacing: 30,
+                children: [
+                  Text('hi'),
+                  Text('hi'),
+                  Text('hi'),
+                  Text('hi'),
+                  Text('hi'),
 
-                },
-
-
-              ),
-              SizedBox(height: 10,),
-              ListTile(
-                title: Text('Rafat Miraj',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
-                subtitle: Text('01314000000'),
-                leading: Icon(Icons.person),///set icon on the left side of title
-                trailing: Icon(Icons.call) ,///set icon on right side
-                tileColor: Colors.grey.shade400,
+                ],
+              )
 
 
-              ),
-              SizedBox(height: 10,),
-              ListTile(
-                title: Text('Rafat Miraj',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
-                subtitle: Text('01314000000'),
-                leading: Icon(Icons.person),///set icon on the left side of title
-                trailing: Icon(Icons.call) ,///set icon on right side
-                tileColor: Colors.grey.shade400,
-
-
-              ),
-              SizedBox(height: 10,),
-              ListTile(
-                title: Text('Rafat Miraj',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
-                subtitle: Text('01314000000'),
-                leading: Icon(Icons.person),///set icon on the left side of title
-                trailing: Icon(Icons.call) ,///set icon on right side
-                tileColor: Colors.grey.shade400,
-
-
-              ),
             ],
           ),
 
