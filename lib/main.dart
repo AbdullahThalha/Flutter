@@ -22,6 +22,7 @@ class Homepage extends StatelessWidget {
   TextEditingController emailController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
    TextEditingController numberController=TextEditingController();
+   GlobalKey<FormState>formKey= GlobalKey<FormState>();///when we use form ,have to use the line
 
 
 
@@ -44,69 +45,86 @@ class Homepage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
-          child: Column(
-              mainAxisAlignment:MainAxisAlignment.center,
-              children:[
-                TextFormField(
-                   validator:(String?value){
-                     if(value!.isEmpty){
-                       return 'enter email';
-    }
-                     else{
-                       return null;
-                     }
-                     },///for mandotory email and password validator is being used and in number is not being used;
-                  controller:emailController,
-                  ///obscureText: true,
-                  decoration: InputDecoration(
-                  hintText: 'email',
-                  fillColor:Colors.grey.shade500,
-                  filled: true,
+          child: Form(
+            key:formKey, ///(this formkey is from the above),///validation for ky
 
+            child: Column(///wrapped it with form as its the parent widget.
+                mainAxisAlignment:MainAxisAlignment.center,
+                children:[
+                  TextFormField(
+                     validator:(String?value){
+                       if(value!.isEmpty){
+                         return 'enter email';
+    }
+                       else{
+                         return null;
+                       }
+                       },///for mandotory a textformfield(email,password)validator is being used and in number is not being used;
+                    controller:emailController,
+                    ///obscureText: true,
+                    decoration: InputDecoration(
+                    hintText: 'email',///works as watermark on textfield
+                    fillColor:Colors.grey.shade500,///for setting the color;
+                    filled: true,///if not set true then fillcolor doesnot work
+
+                    ),
                   ),
-                ),
+
+
+                    SizedBox(height: 20,),
+                    TextFormField(
+              validator:(String?value) {
+                if (value?.isEmpty??true) {
+                  return 'enter password';
+                }
+                else {
+                  return null;
+                }
+              },
+                    controller:passwordController,///its mendatory to set controller,validator for every textformfield;
+
+                    decoration: InputDecoration(
+                    hintText: 'password',
+                    fillColor:Colors.grey.shade500,
+                    filled: true,
+                    border: OutlineInputBorder(
+                    borderRadius: BorderRadius.only(topLeft:Radius.circular(10), topRight:Radius.circular(10) ),
+
+                    )
+                    ),
+
+
+                    ),
+
 
 
                   SizedBox(height: 20,),
                   TextFormField(
-                  controller:passwordController,///its mendatory to set controller,validator for every textformfield;
+                    controller:numberController,///its mendatory to set controller,validator for every textformfield;
 
-                  decoration: InputDecoration(
-                  hintText: 'password',
-                  fillColor:Colors.grey.shade500,
-                  filled: true,
-                  border: OutlineInputBorder(
-                  borderRadius: BorderRadius.only(topLeft:Radius.circular(10), topRight:Radius.circular(10) ),
+                    decoration: InputDecoration(
+                        hintText: 'number',
+                        fillColor:Colors.grey.shade500,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.only(topLeft:Radius.circular(10), topRight:Radius.circular(10) ),
 
-                  )
+                        )
+                    ),
+
+
                   ),
-
-
-                  ),
-
-
-
-                SizedBox(height: 20,),
-                TextFormField(
-                  controller:numberController,///its mendatory to set controller,validator for every textformfield;
-
-                  decoration: InputDecoration(
-                      hintText: 'number',
-                      fillColor:Colors.grey.shade500,
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.only(topLeft:Radius.circular(10), topRight:Radius.circular(10) ),
-
-                      )
-                  ),
-
-
-                )
+                  ElevatedButton(onPressed: (){
+                    if(formKey.currentState!.validate()){
+                      print('Next screen or validation success');
+                    }
+                  }, child: Text('Next'))
 
 
 
-              ]
+                ],
 
+            ),
           ),
 
         ),
