@@ -28,29 +28,34 @@ class Homepage extends StatelessWidget {
       ///Scaffold :works on individual screen
       appBar: AppBar(
         title: Text('Home Screen'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
+        centerTitle: true,
       ),
 
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child:Column(
-            children: [
-              Wrap(///wrapping is like row ,but in wrapping if overlapping something
-                spacing: 30,
+        child: ListView.separated(///listview is just like array;same work again again ;
+            itemCount: 5,///builder is basic widget for listview and item count means how much time it will repeat;
+            itemBuilder:(builder,context){///itembuilder is a property in which the builder and context should be included
+              return Column(
                 children: [
-                  Text('hi'),
-                  Text('hi'),
-                  Text('hi'),
-                  Text('hi'),
-                  Text('hi'),
+                  ListTile(
+                    title: Text('Abdullah al Thalha'),
+                    subtitle: Text('0131444444'),
+                    leading: Icon(Icons.add_call),
+                    trailing: Icon(Icons.camera),
 
+                  )
                 ],
-              )
 
-
-            ],
-          ),
+              );
+            },
+          separatorBuilder: (BuildContext context, int index) {
+              return Divider(
+                thickness: 2,
+                color: Colors.red,
+              );
+          },
 
         ),
       ),
